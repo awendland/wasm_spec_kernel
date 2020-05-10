@@ -3,12 +3,12 @@ requires = ["flit"]
 build-backend = "flit.buildapi"
 
 [tool.flit.metadata]
-module = "bash_kernel"
-author = "Thomas Kluyver"
-author-email = "thomas@kluyver.me.uk"
-home-page = "https://github.com/takluyver/bash_kernel"
+module = "wasm_kernel"
+author = "Alex Wendland"
+author-email = "me@alexwendland.com"
+home-page = "https://github.com/awendland/wasm_kernel"
 requires = ["pexpect (>=4.0)"]
-description-file = "README.rst"
+description-file = "README.md"
 classifiers = [
     "Framework :: IPython",
     "License :: OSI Approved :: BSD License",

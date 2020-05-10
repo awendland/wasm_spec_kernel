@@ -1,3 +1,3 @@
-"""A bash kernel for Jupyter"""
+"""A wasm kernel for Jupyter"""
 
 from .kernel import __version__
