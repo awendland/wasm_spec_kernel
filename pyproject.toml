@@ -1,14 +1,12 @@
-[build-system]
-requires = ["flit"]
-build-backend = "flit.buildapi"
-
-[tool.flit.metadata]
-module = "wasm_kernel"
-author = "Alex Wendland"
-author-email = "me@alexwendland.com"
-home-page = "https://github.com/awendland/wasm_kernel"
-requires = ["pexpect (>=4.0)"]
-description-file = "README.md"
+[tool.poetry]
+name = "simple_wasm_kernel"
+version = "0.1.6"
+description = "A wasm kernel for Jupyter"
+authors = ["Alex Wendland <me@alexwendland.com>"]
+license = "BSD-3-Clause"
+readme = "README.md"
+repository = "https://github.com/awendland/simple_wasm_kernel.git"
+homepage = "https://github.com/awendland/simple_wasm_kernel"
 classifiers = [
     "Framework :: IPython",
     "License :: OSI Approved :: BSD License",
@@ -16,3 +14,14 @@ classifiers = [
     "Topic :: System :: Shells",
 ]
 
+[tool.poetry.dependencies]
+python = "^3.6.2"
+pexpect = "^4.8.0"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+jupyterlab = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

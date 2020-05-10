@@ -1,3 +1,3 @@
 """A wasm kernel for Jupyter"""
 
-from .kernel import __version__
+__version__ = "0.1.6"
