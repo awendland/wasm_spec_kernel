@@ -37,7 +37,9 @@ cmd = pexpect.spawn(
 repl = WasmREPLWrapper(cmd)
 print(repl.run_command(u"(1 + 1)"))
 print(repl.run_command(u"(module $test)"))
-print(repl.run_command(u"(module $incomplete\n)"))
+print(repl.run_command(u"(module $newline\n)"))
+print(repl.run_command(u"(module $incomplete"))
+print(repl.run_command(u"(module $incomplete_newline\n"))
 print(
     repl.run_command(
         """

@@ -1,10 +1,11 @@
 """Wrapper for the Wasm reference interpreter's read-eval-print-loop.
 """
 import pexpect
+from pexpect.replwrap import REPLWrapper
 from pexpect.replwrap import basestring
 
 
-class WasmREPLWrapper(object):
+class WasmREPLWrapper(REPLWrapper):
     """Wrapper for a Wasm reference interpreter REPL. Extends
     pexpect.replwrap.REPLWrapper with the following changes:
 
@@ -34,23 +35,14 @@ class WasmREPLWrapper(object):
         cmd_or_spawn,
         extra_init_cmd=None,
     ):
-        if isinstance(cmd_or_spawn, basestring):
-            self.child = pexpect.spawn(cmd_or_spawn, echo=False, encoding="utf-8")
-        else:
-            self.child = cmd_or_spawn
-        if self.child.echo:
-            # Existing spawn instance has echo enabled, disable it
-            # to prevent our input from being repeated to output.
-            self.child.setecho(False)
-            self.child.waitnoecho()
-
-        self.prompt = u"(^|\r\n)> "
-        self.continuation_prompt = u"^  "
-
-        self._expect_prompt()
-
-        if extra_init_cmd is not None:
-            self.run_command(extra_init_cmd)
+        REPLWrapper.__init__(
+            self,
+            cmd_or_spawn,
+            u"(^|\r\n)> ",
+            None,
+            continuation_prompt=u"^  ",
+            extra_init_cmd=extra_init_cmd,
+        )
 
     def set_prompt(self, orig_prompt, prompt_change):
         raise TypeError("The Wasm REPL's prompt can't be changed")
