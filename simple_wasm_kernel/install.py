@@ -3,8 +3,8 @@ import os
 import sys
 import argparse
 
-from jupyter_client.kernelspec import KernelSpecManager
-from IPython.utils.tempdir import TemporaryDirectory
+from jupyter_client.kernelspec import KernelSpecManager  # type: ignore
+from IPython.utils.tempdir import TemporaryDirectory  # type: ignore
 
 
 def gen_kernel_json(interpreter=None):
