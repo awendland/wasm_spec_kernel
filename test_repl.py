@@ -2,7 +2,7 @@ import pexpect
 import signal
 
 # from pexpect.replwrap import REPLWrapper
-from simple_wasm_kernel.replwrapper import REPLWrapper
+from simple_wasm_kernel.wasm_replwrap import WasmREPLWrapper
 
 cmd = pexpect.spawn(
     "/Users/awendland/Downloads/wasm_abstypes_955f3d3a_macOS-64bit",
@@ -34,7 +34,7 @@ cmd = pexpect.spawn(
     encoding="utf-8",
     echo=False,
 )
-repl = REPLWrapper(cmd, u"(^|\r\n)> ", None, continuation_prompt=u"^  ")
+repl = WasmREPLWrapper(cmd)
 print(repl.run_command(u"(1 + 1)"))
 print(repl.run_command(u"(module $test)"))
 print(repl.run_command(u"(module $incomplete\n)"))
@@ -51,15 +51,15 @@ print(
 print(
     repl.run_command(
         """
-(module $test01_m1
+(module $test02_m1
   (func $getNum (export "getNum") (result i32) (i32.const 4)))
-(register "test01_m1" $test01_m1)
-(module $test01_m2
+(register "test02_m1" $test02_m1)
+(module $test02_m2
   (type (;0;) (func (result i32)))
-  (import "demo01_m1" "getNum" (func $m1_getNum (type 0)))
+  (import "test02_m1" "getNum" (func $m1_getNum (type 0)))
   (func $getNum (export "getNum") (result i32) (call $m1_getNum)))
-(register "test01_m2" $test01_m2)
-(assert_return (invoke $test01_m1 "getNum") (i32.const 3 (;should fail;)))
+(register "test02_m2" $test02_m2)
+(assert_return (invoke $test02_m1 "getNum") (i32.const 3 (;should fail;)))
 """
     )
 )
@@ -84,7 +84,7 @@ print(
 )
 (register "demo01_m2" $demo01_m2)
 (assert_return (invoke $demo01_m2 "main") (i32.const 1 (;true;)))
-(assert_return (invoke $demo01_m2 "main") (i32.const 2 (;true;)))
+(assert_return (invoke $demo01_m2 "main") (i32.const 2 (;should fail;)))
 """
     )
 )
