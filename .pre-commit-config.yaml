@@ -18,22 +18,6 @@ repos:
     hooks:
       - id: prettier
 
-  - repo: https://github.com/psf/black
-    rev: 20.8b1
-    hooks:
-      - id: black
-
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.1
-    hooks:
-      - id: flake8
-        additional_dependencies: [flake8-bugbear]
-
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.790
-    hooks:
-      - id: mypy
-
   - repo: local
     hooks:
       # https://github.com/hadolint/hadolint
@@ -59,9 +43,31 @@ repos:
         types: [markdown]
         args: [--config, .markdownlintrc]
 
+      ####################################################################################
+      # Use package local installations to ensure IDE/CLI versions align with pre-commit #
+      ####################################################################################
+
       - id: poetry-lint
         name: Poetry (python package manager) Lint
         language: system
         entry: python -m poetry check
         pass_filenames: false
         files: pyproject.toml
+
+      - id: mypy
+        name: mypy type check
+        language: system
+        entry: python -m poetry run mypy
+        types: [python]
+
+      - id: black
+        name: black formatting
+        language: system
+        entry: python -m poetry run black
+        types: [python]
+
+      - id: flake8
+        name: flake8 linting
+        language: system
+        entry: python -m poetry run flake8
+        types: [python]
