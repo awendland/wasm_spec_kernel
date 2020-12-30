@@ -1,14 +1,17 @@
 import pytest
-import pexpect
+import pexpect  # type: ignore
 import os
 from simple_wasm_kernel.wasm_replwrap import WasmREPLWrapper
 from simple_wasm_kernel.defs import LESS_THAN_OCAML_MAX_INT
 
 
+@pytest.fixture
 def new_repl():
     wasm_path = os.environ.get("TEST_WASM_PATH")
     if wasm_path is None:
-        raise Exception("You must provide an environment variable called TEST_WASM_PATH with a path to a valid wasm interpreter binary.")
+        raise Exception(
+            "You must provide an environment variable called TEST_WASM_PATH with a path to a valid wasm interpreter binary."
+        )
     return WasmREPLWrapper(
         pexpect.spawn(
             wasm_path, ["-w", LESS_THAN_OCAML_MAX_INT], encoding="utf-8", echo=False
@@ -127,8 +130,8 @@ stdin:2.1-2.65: assertion failure: wrong return values
         ("\n", ""),
     ],
 )
-def test_run_command(wasm_code, stdout):
+def test_run_command(new_repl, wasm_code, stdout):
     """These parametrized tests are primarily focused on documenting how whitespace is
     being handled.
     """
-    assert new_repl().run_command(wasm_code) == stdout
+    assert new_repl.run_command(wasm_code) == stdout

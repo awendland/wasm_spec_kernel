@@ -1,8 +1,5 @@
-"""Wrapper for the Wasm reference interpreter's read-eval-print-loop.
-"""
-import pexpect
-from pexpect.replwrap import REPLWrapper
-from pexpect.replwrap import basestring
+"""Wrapper for the Wasm reference interpreter's read-eval-print-loop."""
+from pexpect.replwrap import REPLWrapper  # type: ignore
 
 
 class WasmREPLWrapper(REPLWrapper):
