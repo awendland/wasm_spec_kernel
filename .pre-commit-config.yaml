@@ -52,18 +52,22 @@ repos:
         language: system
         entry: python -m poetry run mypy
         types: [python]
+        args: ["--ignore-missing-imports", "--scripts-are-modules"]
+        require_serial: true
 
       - id: black
         name: black formatting
         language: system
         entry: python -m poetry run black
         types: [python]
+        require_serial: true
 
       - id: flake8
         name: flake8 linting
         language: system
         entry: python -m poetry run flake8
         types: [python]
+        require_serial: true
 
       ############################
       # Custom pre-commit checks #
