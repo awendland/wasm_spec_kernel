@@ -27,7 +27,7 @@ error_pat = re.compile(
 )  # 1=location, 2=type, 3=details
 
 log_level = int(os.environ.get(ENV_LOG_LEVEL, str(logging.WARNING)))
-log_params: Dict[str, Any] = {"encoding": "utf-8", "level": log_level}
+log_params: Dict[str, Any] = {"level": log_level}
 log_path = os.environ.get(ENV_LOG_FILE)
 if log_path is not None:
     log_params["filename"] = log_path
