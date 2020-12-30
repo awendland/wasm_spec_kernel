@@ -67,5 +67,4 @@ jobs:
           chmod a+x "$TEST_WASM_PATH"
       - name: Run pytest
         run: |
-          ls -la "$TEST_WASM_PATH"
           python -m poetry run pytest -v --color=yes
