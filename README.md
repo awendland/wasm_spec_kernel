@@ -2,6 +2,10 @@
 
 A Jupyter kernel for the WebAssembly reference interpreter (see [webassembly/spec](https://github.com/WebAssembly/spec)).
 
+You can try this kernel out in an example notebook using Binder:
+
+[![launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/awendland/wasm_spec_kernel/HEAD?filepath=example_notebook.ipynb)
+
 ## Installation
 
 ### Wasm Reference Interpreter
