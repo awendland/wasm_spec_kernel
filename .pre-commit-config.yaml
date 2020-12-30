@@ -47,13 +47,6 @@ repos:
       # Use package local installations to ensure IDE/CLI versions align with pre-commit #
       ####################################################################################
 
-      - id: poetry-lint
-        name: Poetry (python package manager) Lint
-        language: system
-        entry: python -m poetry check
-        pass_filenames: false
-        files: pyproject.toml
-
       - id: mypy
         name: mypy type check
         language: system
@@ -71,3 +64,20 @@ repos:
         language: system
         entry: python -m poetry run flake8
         types: [python]
+
+      ############################
+      # Custom pre-commit checks #
+      ############################
+
+      - id: poetry-lint
+        name: Poetry (python package manager) Lint
+        language: system
+        entry: python -m poetry check
+        pass_filenames: false
+        files: pyproject.toml
+
+      - id: check_metadata
+        name: Check package check_metadata
+        language: system
+        entry: python -m poetry run python bin/check_metadata.py
+        pass_filenames: false

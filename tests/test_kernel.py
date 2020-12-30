@@ -117,7 +117,7 @@ class TestKernel:
                         "argv": [
                             sys.executable,
                             "-m",
-                            "simple_wasm_kernel",
+                            "wasm_spec_kernel",
                             "-f",
                             "{connection_file}",
                         ],

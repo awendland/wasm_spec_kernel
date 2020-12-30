@@ -1066,7 +1066,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.2"
-content-hash = "79ef32b32fbea2eb055c9ce940196bf17c99608b437e1dcd683351a8eeffd1d1"
+content-hash = "6f80a2aa8e63484caec352fe705d67b05cfba981ea7f97a114835b0e45405b5a"
 
 [metadata.files]
 anyio = [

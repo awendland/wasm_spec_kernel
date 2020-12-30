@@ -2,7 +2,7 @@
 # reserved by the runtime)
 LESS_THAN_OCAML_MAX_INT = str(2 ^ 30)
 
-KERNEL_NAME = "simple_wasm"
+KERNEL_NAME = "wasm_spec"
 KERNEL_IMPLEMENTATION_NAME = KERNEL_NAME + "_kernel"
 
 # Environment Variables

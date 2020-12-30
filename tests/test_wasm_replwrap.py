@@ -1,8 +1,8 @@
 import pytest
 import pexpect  # type: ignore
 import os
-from simple_wasm_kernel.wasm_replwrap import WasmREPLWrapper
-from simple_wasm_kernel.defs import LESS_THAN_OCAML_MAX_INT
+from wasm_spec_kernel.wasm_replwrap import WasmREPLWrapper
+from wasm_spec_kernel.defs import LESS_THAN_OCAML_MAX_INT
 
 
 @pytest.fixture

@@ -9,8 +9,8 @@ from IPython.utils.tempdir import TemporaryDirectory  # type: ignore
 
 def gen_kernel_json(interpreter=None):
     return {
-        "argv": [sys.executable, "-m", "simple_wasm_kernel", "-f", "{connection_file}"],
-        "display_name": "Simple Wasm",
+        "argv": [sys.executable, "-m", "wasm_spec_kernel", "-f", "{connection_file}"],
+        "display_name": "WebAssembly Reference Interpreter",
         "language": "wat",
         "codemirror_mode": "commonlisp",
         "env": {"WASM_INTERPRETER": interpreter},
@@ -24,9 +24,9 @@ def install_my_kernel_spec(user=True, prefix=None, **kwargs):
             json.dump(gen_kernel_json(**kwargs), f, sort_keys=True)
         # TODO: Copy resources once they're specified
 
-        print("Installing IPython kernel spec for `simple_wasm`")
+        print("Installing IPython kernel spec for `wasm_spec`")
         KernelSpecManager().install_kernel_spec(
-            td, "simple_wasm", user=user, prefix=prefix
+            td, "wasm_spec", user=user, prefix=prefix
         )
 
 
