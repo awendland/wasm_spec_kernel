@@ -33,14 +33,18 @@ jobs:
       - uses: pre-commit/action@v2.0.0
 
   pytest:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.6, 3.9]
     env:
       TEST_WASM_PATH: "${{ github.workspace }}/wasm"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
       # POETRY:START #
       # TODO make this DRY once composite run actions support steps with uses (https://github.com/actions/runner/issues/646)
       - name: Install poetry
