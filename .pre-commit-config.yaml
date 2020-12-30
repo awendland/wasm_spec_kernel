@@ -9,7 +9,7 @@ repos:
       - id: detect-private-key
 
   - repo: git://github.com/luminopia/pre-commit-hooks
-    rev: v0.0.6
+    rev: v0.0.11
     hooks:
       - id: enforce-action-comments
 
