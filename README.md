@@ -2,7 +2,7 @@
 
 A Jupyter kernel for the WebAssembly reference interpreter (see [webassembly/spec](https://github.com/WebAssembly/spec)).
 
-You can try this kernel out in an example notebook using Binder:
+You can try this kernel out in an [example_notebook.ipynb](./example_notebook.ipynb) using Binder:
 
 [![launch Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/awendland/wasm_spec_kernel/HEAD?filepath=example_notebook.ipynb)
 
@@ -14,7 +14,7 @@ This kernel requires a [Wasm reference interpreter](https://github.com/WebAssemb
 
 You can clone a WebAssembly spec repo and build the interpreter yourself using the OCaml toolchain.
 
-@awendland provides a pre-compiled variant of the Wasm reference interpreter with language extensions for abstract types at [awendland/webassembly-spec-abstypes](https://github.com/awendland/webassembly-spec-abstypes).
+[@awendland](https://github.com/awendland) provides a pre-compiled variant of the Wasm reference interpreter with language extensions for abstract types at [awendland/webassembly-spec-abstypes](https://github.com/awendland/webassembly-spec-abstypes).
 
 #### Configuration
 
@@ -44,6 +44,8 @@ jupyter console --kernel wasm_spec
 ## Purpose
 
 This exists because the WebAssembly reference interpreter is written in OCaml and OCaml is difficult to compile to WebAssembly (otherwise the latest reference interpreter could be hosted via v1 WebAssembly already available in evergreen web browsers). A Jupyter kernel should assist with sharing WebAssembly code samples leveraging features from the various forks of the WebAssembly specification.
+
+I created this to share code samples alongside my undergraduate thesis which focuses on using [WebAssembly as a Multi-Language Platform](https://github.com/awendland/2020-thesis).
 
 ## How This Works
 
